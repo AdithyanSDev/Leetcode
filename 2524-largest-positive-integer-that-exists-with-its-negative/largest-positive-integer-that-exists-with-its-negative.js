@@ -3,13 +3,13 @@
  * @return {number}
  */
 var findMaxK = function(nums) {
-nums=nums.sort((a,b)=>b-a)
-for(let i=0;i<nums.length;i++){
-    for(let j=0;j<nums.length;j++){
-        if(nums[i]== -nums[j]){
-            return nums[i]
+    const map =new Map()
+    let max=-1
+    for(let i of nums){
+        if(map.has(i*-1)){
+            max=Math.max(max,Math.abs(i))
         }
+        map.set(i,0)
     }
-}
-return -1
+    return max
 };
